@@ -12,8 +12,11 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Timer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +28,10 @@ import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
 public class RobotTemplate extends IterativeRobot {
 
     Command autonomousCommand;
+    Catapult catapult;
+    OI oi;
+    Intake intake;
+    Timer timer;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -33,14 +40,21 @@ public class RobotTemplate extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
+        catapult = new Catapult();
+        intake = new Intake();
+        oi = new OI();
 
         // Initialize all subsystems
         CommandBase.init();
+        SmartDashboard.putData(Scheduler.getInstance());
+        
     }
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
         autonomousCommand.start();
+        
+        
     }
 
     /**
@@ -48,7 +62,38 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        
+        if (isGoalHot())
+        {
+            moveForward(2);
+            catapult.shoot(0.5);
+            moveForward(3);
+        }
+        else
+        {
+            moveForward(5);
+            catapult.shoot(0.4);            
+        }
     }
+    
+    public void moveForward(int time) {
+        timer = new Timer();
+        RobotDrive mainDrive = new RobotDrive(1,2,3,4);
+        
+        timer.start();
+            while(timer.get() < 3)
+            {
+                mainDrive.tankDrive(0.5, 0.5);
+            }
+            timer.stop();
+        
+    }
+    
+    public boolean isGoalHot() {
+        
+        return true;
+    }
+            
 
     public void teleopInit() {
 	// This makes sure that the autonomous stops running when
@@ -56,6 +101,8 @@ public class RobotTemplate extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         autonomousCommand.cancel();
+        
+     
     }
 
     /**
@@ -63,6 +110,22 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        
+        if (oi.getTrigger(1, 0) == 1)
+        {
+            catapult.shoot(0.7);    //Shoot with right trigger
+        }
+        
+        if (oi.yButton_driverControllerXbox.get())
+        {
+            intake.toggle();    //toggle roller on and off with y
+        }
+        
+        if (oi.bButton_driverControllerXbox.get())
+        {
+            intake.spit();    //spit out ball from roller with b
+        }
+                
     }
     
     /**

@@ -111,10 +111,6 @@ public class OI {
         return 0;
     }
     
-    getJoystick(2,0,1)
-            
-    getJoystick(DriverControllerXbox, Left, X);
-    
     public double getJoystick(int controller, int side, int axis)
     {
         switch (controller)
@@ -166,12 +162,15 @@ public class OI {
                         return operatorControllerXbox.getRawAxis(5);                 
                     }
                 }
+                
+                
+                
                 break;
             default:
                break;            
         }
         return 0;
         
-    }    
+    }
 }
 
