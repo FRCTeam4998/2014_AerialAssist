@@ -102,6 +102,7 @@ public class RobotTemplate extends IterativeRobot {
         // this line or comment it out.
         autonomousCommand.cancel();
         
+        intake.unload();
      
     }
 
@@ -123,15 +124,20 @@ public class RobotTemplate extends IterativeRobot {
             catapult.shoot(0.3);    //Slow shoot with left trigger
         }
         
-        if (oi.yButton_driverControllerXbox.get())
+        if (oi.aButton_driverControllerXbox.get())
         {
-            intake.toggle();    //toggle roller on and off with y
+            intake.toggleRollerSpeed();    //toggle roller on and off with a
         }
         
         if (oi.bButton_driverControllerXbox.get())
         {
             intake.spit();    //spit out ball from roller with b
         }
+        
+        if (oi.yButton_driverControllerXbox.get())
+        {
+            intake.toggleLoad();    //toggle the unload/reload position of the rollers with y
+        }        
                 
     }
     
