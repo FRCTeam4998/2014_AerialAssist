@@ -32,6 +32,7 @@ public class RobotTemplate extends IterativeRobot {
     OI oi;
     Intake intake;
     Timer timer;
+    RobotDrive mainDrive = new RobotDrive(1,2,3,4);
 
     /**
      * This function is run when the robot is first started up and should be
@@ -78,7 +79,6 @@ public class RobotTemplate extends IterativeRobot {
     
     public void moveForward(int time) {
         timer = new Timer();
-        RobotDrive mainDrive = new RobotDrive(1,2,3,4);
         
         timer.start();
             while(timer.get() < 3)
@@ -111,9 +111,16 @@ public class RobotTemplate extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        if (oi.getTrigger(1, 0) == 1)
+        mainDrive.tankDrive(oi.getJoystick(1, 0, 1), oi.getJoystick(1, 1, 1));
+        
+        if (oi.getTrigger(1, 1) == 1)
         {
             catapult.shoot(0.7);    //Shoot with right trigger
+        }
+        
+        if (oi.getTrigger(1, 0) == 1)
+        {
+            catapult.shoot(0.3);    //Slow shoot with left trigger
         }
         
         if (oi.yButton_driverControllerXbox.get())
