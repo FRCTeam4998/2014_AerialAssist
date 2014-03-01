@@ -1,5 +1,5 @@
 package edu.wpi.first.wpilibj.templates;
-
+// author Johnathon
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -7,6 +7,11 @@ package edu.wpi.first.wpilibj.templates;
  * floating around.
  */
 public class RobotMap {
+    public static final int elevMotor = 1;
+    public static final int elevMotor2 = 2;
+    public static final int catMSStart = 1;
+    public static final int catMSEnd = 1;
+    public static final int intakeRoller = 3;
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
     // public static final int leftMotor = 1;
