@@ -7,17 +7,24 @@ package edu.wpi.first.wpilibj.templates;
  * floating around.
  */
 public class RobotMap {
+    
+    //ports for Victors
     public static final int elevMotor = 1;
     public static final int elevMotor2 = 2;
-    public static final int catMSStart = 1;
-    public static final int catMSEnd = 1;
     public static final int intakeRollerL = 3;
     public static final int intakeRollerR = 4;
-    public static final int winMotor = 5;
+    public static final int winMotor = 5;    
+    //ports for DigitalInputs
+    public static final int catMSStart = 1;
+    public static final int catMSEnd = 1;
     public static final int inMSStart = 3;
-    public static final int inMSEnd = 4;
-    public static final int hotSpeed = 2;
-    public static final int hotSpeedAfter = 3;
+    public static final int inMSEnd = 4;    
+
+    /*
+    speeds used by the robot in auton
+    */
+    public static final int hotSpeed1 = 2;
+    public static final int hotSpeed2 = 3;
     public static final int hotSpeedElse = 5;
     public static final double hotShotBefore = 0.5;
     public static final double hotShotElse = 0.4;
