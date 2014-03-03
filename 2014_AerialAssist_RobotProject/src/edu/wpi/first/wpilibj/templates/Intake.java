@@ -26,34 +26,8 @@ public class Intake extends IterativeRobot {
         intakeRollerL.set(0.0);
         intakeRollerR.set(0.0);
     }
-
-    public void toggleRollerSpeed() {
-        if ((intakeRollerL.get() != 0.0) || (intakeRollerR.get() != 0.0))
-        {
-            intakeRollerL.set(0.0);
-            intakeRollerR.set(0.0);
-        }
-        else
-        {
-            intakeRollerL.set(0.5);
-            intakeRollerR.set(-0.5);
-        }
-    }
     
-    public void spit() {
-        if ((intakeRollerL.get() != -0.5)  || (intakeRollerR.get() != 0.5))
-        {
-            intakeRollerL.set(-0.5);
-            intakeRollerR.set(0.5);
-        }
-        else
-        {
-            intakeRollerL.set(0.0);
-            intakeRollerR.set(0.0);
-        }
-    }
-    
-    public void unload() {
+public void unload() {
         double speed = 0.5;
         
         if (checkSwitch(inMSStart))
@@ -85,4 +59,32 @@ public class Intake extends IterativeRobot {
     public boolean checkSwitch(DigitalInput microSwitch) {    
         return microSwitch.get();
     }
+
+    public void toggleRollerSpeed() {
+        if ((intakeRollerL.get() != 0.0) || (intakeRollerR.get() != 0.0))
+        {
+            intakeRollerL.set(0.0);
+            intakeRollerR.set(0.0);
+        }
+        else
+        {
+            intakeRollerL.set(0.5);
+            intakeRollerR.set(-0.5);
+        }
+    }
+    
+    public void spit() {
+        reload();
+        if ((intakeRollerL.get() != -0.5)  || (intakeRollerR.get() != 0.5))
+        {
+            intakeRollerL.set(-0.5);
+            intakeRollerR.set(0.5);
+        }
+        else
+        {
+            intakeRollerL.set(0.0);
+            intakeRollerR.set(0.0);
+        }
+        unload();
+    }    
 }

@@ -13,8 +13,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.templates.commands.CommandBase;
-import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
 
@@ -40,13 +38,10 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
         catapult = new Catapult();
         intake = new Intake();
         oi = new OI();
-
-        // Initialize all subsystems
-        CommandBase.init();
+        
         SmartDashboard.putData(Scheduler.getInstance());
         
     }
@@ -54,6 +49,8 @@ public class RobotTemplate extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
         autonomousCommand.start();
+        
+        //intake.unload();
         
         
     }
@@ -81,7 +78,7 @@ public class RobotTemplate extends IterativeRobot {
         timer = new Timer();
         
         timer.start();
-            while(timer.get() < 3)
+            while(timer.get() < time)
             {
                 mainDrive.tankDrive(0.5, 0.5);
             }
@@ -102,7 +99,7 @@ public class RobotTemplate extends IterativeRobot {
         // this line or comment it out.
         autonomousCommand.cancel();
         
-        intake.unload();
+        
      
     }
 
@@ -112,29 +109,35 @@ public class RobotTemplate extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        mainDrive.tankDrive(oi.getJoystick(1, 0, 1), oi.getJoystick(1, 1, 1));
+        //mainDrive.tankDrive(oi.getJoystick(1, 0, 1), oi.getJoystick(1, 1, 1));
+        mainDrive.tankDrive(oi.driverControllerJoystick.getY(), oi.driverControllerJoystick.getY());
         
-        if (oi.getTrigger(1, 1) == 1)
+        //if (oi.getTrigger(1, 1) == 1)
+        if (oi.triggerButton_driverControllerJoystick.get())
         {
             catapult.shoot(0.7);    //Shoot with right trigger
         }
         
-        if (oi.getTrigger(1, 0) == 1)
+        //if (oi.getTrigger(1, 0) == 1)
+        if (oi.thumbButtonNum_2_driverControllerJoystick.get())
         {
             catapult.shoot(0.3);    //Slow shoot with left trigger
         }
         
-        if (oi.aButton_driverControllerXbox.get())
+        //if (oi.aButton_driverControllerXbox.get())
+        if (oi.thumbButtonNum_3_driverControllerJoystick.get())
         {
             intake.toggleRollerSpeed();    //toggle roller on and off with a
         }
         
-        if (oi.bButton_driverControllerXbox.get())
+        //if (oi.bButton_driverControllerXbox.get())
+        if (oi.thumbButtonNum_4_driverControllerJoystick.get())
         {
             intake.spit();    //spit out ball from roller with b
         }
         
-        if (oi.yButton_driverControllerXbox.get())
+        //if (oi.yButton_driverControllerXbox.get())
+        if (oi.thumbButtonNum_5_driverControllerJoystick.get())
         {
             intake.toggleLoad();    //toggle the unload/reload position of the rollers with y
         }        

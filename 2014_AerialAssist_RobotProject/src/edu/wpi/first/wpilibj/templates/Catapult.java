@@ -21,6 +21,20 @@ public class Catapult extends IterativeRobot {
         elevMotor2.set(0.0);
     }
     
+    public boolean checkSwitch(DigitalInput microSwitch) {
+        
+        return microSwitch.get();
+    }
+    
+    public void waitAfterShooting() {
+        
+        timer.reset();
+        timer.start();
+        while(timer.get() < 2.0) {           
+        }
+        timer.stop();              
+    }
+    
     public void shoot(double speed) {
         if (checkSwitch(catMSStart))
         {
@@ -36,18 +50,5 @@ public class Catapult extends IterativeRobot {
                 elevMotor2.set(speed);
             }  
         }
-    }
-    public boolean checkSwitch(DigitalInput microSwitch) {
-        
-        return microSwitch.get();
-    }
-    
-    public void waitAfterShooting() {
-        
-        timer.reset();
-        timer.start();
-        while(timer.get() < 2.0) {           
-        }
-        timer.stop();              
     }
 }
