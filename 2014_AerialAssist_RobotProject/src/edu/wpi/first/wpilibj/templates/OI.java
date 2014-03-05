@@ -3,6 +3,11 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.templates.commands.Shoot;
+import edu.wpi.first.wpilibj.templates.commands.Spitting;
+import edu.wpi.first.wpilibj.templates.commands.ToggleRollerSpeed;
+import edu.wpi.first.wpilibj.templates.commands.Unload;
+import edu.wpi.first.wpilibj.templates.commands.Reload;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -68,6 +73,7 @@ public class OI {
      * @param side - Left or Right
      * @return zero if no cases meet requirements 
      */
+    
     public double getTrigger(int controller, int side)
     {
         switch (controller) 
