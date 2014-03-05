@@ -4,6 +4,8 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.RobotMap;
+
 /**
  *
  * @author e7admin
@@ -26,8 +28,8 @@ public class ToggleRollerSpeed extends CommandBase {
     protected void execute() {
         if ((leftIntakeRoller == 0.0) && (rightIntakeRoller == 0.0))
         {
-            intake.SetLeftIntakeRoller(0.5);
-            intake.SetRightIntakeRoller(-0.5);
+            intake.SetLeftIntakeRoller(RobotMap.intakeSpeed);
+            intake.SetRightIntakeRoller(RobotMap.intakeSpeed * -1);
         }
         else
         {

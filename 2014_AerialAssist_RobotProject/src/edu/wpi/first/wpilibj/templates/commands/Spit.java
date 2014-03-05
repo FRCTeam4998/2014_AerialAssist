@@ -4,6 +4,8 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.RobotMap;
+
 /**
  *
  * @author e7admin
@@ -24,10 +26,10 @@ public class Spit extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if ((leftIntakeRoller != -0.5)  || (rightIntakeRoller != 0.5))
+        if ((leftIntakeRoller != RobotMap.intakeSpeed * -1)  || (rightIntakeRoller != RobotMap.intakeSpeed))
         {
-            intake.SetLeftIntakeRoller(-0.5);
-            intake.SetRightIntakeRoller(0.5);
+            intake.SetLeftIntakeRoller(-1 * RobotMap.intakeSpeed);
+            intake.SetRightIntakeRoller(RobotMap.intakeSpeed);
         }
         else
         {

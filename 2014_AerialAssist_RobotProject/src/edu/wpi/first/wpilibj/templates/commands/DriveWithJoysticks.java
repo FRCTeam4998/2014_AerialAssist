@@ -29,7 +29,6 @@ public class DriveWithJoysticks extends CommandBase {
     protected void execute() {
         drivetrain.arcadeDrive(oi.getJoystick(1, 3, 1),oi.getJoystick(1, 3, 2), true);
     }
-
     // Make this return true when this Command no longer needs to run execute()
     /**
      * @return false, so that it executes forever or until another command

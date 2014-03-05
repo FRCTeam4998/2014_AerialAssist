@@ -81,8 +81,8 @@ public class RobotTemplate extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        oi.rightBumperButton_driverControllerXbox.whenPressed(new Shoot(0.7));     //right bumper high shoot
-        oi.leftBumperButton_driverControllerXbox.whenPressed(new Shoot(0.4));      //left bumper low shoot
+        oi.rightBumperButton_driverControllerXbox.whenPressed(new Shoot(RobotMap.highShot));     //right bumper high shoot
+        oi.leftBumperButton_driverControllerXbox.whenPressed(new Shoot(RobotMap.lowShot));      //left bumper low shoot
         oi.xButton_driverControllerXbox.whenPressed(new ToggleRollerSpeed());      //x button toggle roller speed 
         oi.aButton_driverControllerXbox.whenPressed(new Spitting());               //a button spit
         oi.yButton_driverControllerXbox.whenPressed(new Unload());                 //y button unloads

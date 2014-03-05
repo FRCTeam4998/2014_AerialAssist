@@ -5,6 +5,8 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.RobotMap;
+
 /**
  *
  * @author chrislong1
@@ -29,7 +31,7 @@ public class DriveForTime extends CommandBase
     // Called repeatedly when this Command is scheduled to run
     protected void execute()
     {
-        drivetrain.setLeftRightMotorOutputs(.5, .5);
+        drivetrain.setLeftRightMotorOutputs(RobotMap.autonMoveSpeed, RobotMap.autonMoveSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

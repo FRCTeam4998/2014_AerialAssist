@@ -3,14 +3,13 @@
  * and open the template in the editor.
  */
 package edu.wpi.first.wpilibj.templates.commands;
-
+import edu.wpi.first.wpilibj.templates.RobotMap;
 /**
  *
  * @author e7admin
  */
 public class Reload extends CommandBase {
     
-    double speed = -0.5;
     
     public Reload() {
         // Use requires() here to declare subsystem dependencies
@@ -24,7 +23,7 @@ public class Reload extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        intake.SetWindowMotor(speed);
+        intake.SetWindowMotor(RobotMap.reloadSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

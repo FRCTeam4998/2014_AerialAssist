@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 /**
  *
  * @author e7admin
@@ -17,10 +18,10 @@ public class Catapult extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
-    SpeedController elevMotor1 = new Victor(3);
-    SpeedController elevMotor2 = new Victor(4);  
-    DigitalInput catMSStart = new DigitalInput(2);
-    DigitalInput catMSEnd = new DigitalInput(1);
+    SpeedController elevMotor1 = new Victor(RobotMap.elevMotor);
+    SpeedController elevMotor2 = new Victor(RobotMap.elevMotor2);  
+    DigitalInput catMSStart = new DigitalInput(RobotMap.catMSStart);
+    DigitalInput catMSEnd = new DigitalInput(RobotMap.catMSEnd);
     Timer timer;
 
     public void initDefaultCommand() {

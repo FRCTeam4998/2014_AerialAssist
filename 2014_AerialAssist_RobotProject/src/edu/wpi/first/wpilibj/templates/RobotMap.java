@@ -9,32 +9,87 @@ package edu.wpi.first.wpilibj.templates;
 public class RobotMap {
     
     //ports for Victors
-    public static final int elevMotor = 1;
-    public static final int elevMotor2 = 2;
-    public static final int intakeRollerL = 3;
-    public static final int intakeRollerR = 4;
-    public static final int winMotor = 5;    
-    //ports for DigitalInputs
-    public static final int catMSStart = 1;
-    public static final int catMSEnd = 1;
-    public static final int inMSStart = 3;
-    public static final int inMSEnd = 4;    
-
-    /*
-    speeds used by the robot in auton
+    
+    public static final int elevMotor = 3;
+    /**
+    Currently used in: Catapult.java subsystem
     */
-    public static final int hotSpeed1 = 2;
-    public static final int hotSpeed2 = 3;
-    public static final int hotSpeedElse = 5;
-    public static final double hotShotBefore = 0.5;
-    public static final double hotShotElse = 0.4;
-    public static final double slowShot = 0.3;
-    public static final double fastShot = 0.7;
-    public static final double moveForwardSpeed = 0.5;
-    public static final double unloadSpeed = 0.5;
-    public static final double reloadSpeed = -0.5;
-    public static final double intakeSpeed = 0.5;
+    public static final int elevMotor2 = 4;
+    /**
+    Currently used in: Catapult.java subsystem
+    */    
+    public static final int intakeRollerL = 5;
+    /**
+    Currently used in: Intake.java subsystem
+    */
+    public static final int intakeRollerR = 6;
+    /**
+    Currently used in: Intake.java subsystem
+    */
+    public static final int winMotor = 7;    
+    /**
+    Currently used in: Intake.java subsystem
+    */    
+    
+    //ports for DigitalInputs
 
+    public static final int catMSStart = 2;
+    /**
+    Currently used in: Catapult.java subsystem
+    */
+    public static final int catMSEnd = 1;
+    /**
+    Currently used in: Catapult.java subsystem
+    */
+    public static final int inMSStart = 3;
+    /**
+    Currently used in: Intake.java subsystem
+    */
+    public static final int inMSEnd = 4;    
+    /**
+    Currently used in: Intake.java subsystem
+    */
+    
+    
+    /*
+    settings used by the robot
+    */
+    
+    public static final double autonMoveSpeed = 0.5;
+    /**
+    Currently used in: DriveForTime.java command
+    */
+    public static final double autonShot = 0.5;
+    /**
+    Currently used in: AutonCommandGroup.java command group
+    */
+    public static final double lowShot = 0.4;
+    /**
+    Currently used in: RobotTemplate.java
+    */
+    
+    public static final double highShot = 0.7;
+    /**
+    Currently used in: RobotTemplate.java
+    */
+    
+
+    public static final double unloadSpeed = 0.5;
+    /**
+    Currently used in: Unload.java command
+    */
+    
+    public static final double reloadSpeed = -0.5;
+    /**
+    Currently used in: Reload.java command
+    */
+    
+    public static final double intakeSpeed = 0.5;
+    /**
+    Currently used in: ToggleRollerSpeed.java
+    *                  Spit.java
+    */
+    
 // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
     // public static final int leftMotor = 1;
